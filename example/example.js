@@ -84,6 +84,6 @@ function render (width = window.innerWidth, height = window.innerHeight) {
   // Display score
   ctx.fillStyle = 'black'
   ctx.font = `14px "Helvetica"`
-  ctx.fillText(`font-size: ${result.fontSize}`, 10, canvas.height - 26)
-  ctx.fillText(`score: ${(result.score * 1000).toFixed(4)}`, 10, canvas.height - 10)
+  ctx.fillText(`font-size: ${result.fontSize}`, 10, (canvas.height / dpi) - 26)
+  ctx.fillText(`score: ${(result.score * 1000).toFixed(4)}`, 10, (canvas.height / dpi) - 10)
 }
