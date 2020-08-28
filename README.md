@@ -13,7 +13,7 @@ Built on top of [`mattdesl`](https://github.com/mattdesl)'s [`word-wrapper`](htt
 
 This score starts at maximum, and is reduced by different penalties, defined arbitrarly to produce what is considered a _good_ visual composition (no widows, well balanced ragged lines, etc…).
 
-I am [open to discussion](issues) on what should define a plausible penalty.
+I am [open to discussion](https://github.com/arnaudjuracek/drapeau/issues) on what should define a plausible penalty.
 
 <br>
 
