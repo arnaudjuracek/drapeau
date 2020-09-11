@@ -94,16 +94,13 @@ export function Drapeau (text, {
       score *= penalty.value(context) * (penalty.weight || 1)
     }
 
-    candidates.push({ score, ...context })
+    candidates.push(Object.assign({}, context, { score }))
   }
 
   // Sort candidates by DESC score so that the first one is the best match
   candidates.sort((a, b) => b.score - a.score)
 
-  return {
-    candidates,
-    ...candidates[0]
-  }
+  return Object.assign({}, candidates[0], { candidates })
 
   function createCachableMeasure (fontSize) {
     return function (text, start, end, lineWidth) {
