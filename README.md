@@ -97,7 +97,7 @@ const { fontSize } = drapeau('lorem ipsum…', {
 })
 ```
 
-<sup>See `DEFAULT_PENALITIES` in [`index.js`](index.js).</sup>
+<sup>See `DEFAULT_PENALTIES` in [`index.js`](index.js).</sup>
 
 
 ## Development

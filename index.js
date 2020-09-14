@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash.clonedeep'
 import wrap from 'word-wrapper'
 
-const DEFAULT_PENALITIES = {
+const DEFAULT_PENALTIES = {
   HANGING_PUNCTUATION: {
     illegal: ({ lines }) => lines.find(line => /^\W/.test(line.value))
   },
@@ -61,7 +61,7 @@ export function Drapeau (text, {
   measure = (glyph, fontSize) => ({ width: 1, height: 1 }),
   penalties = clonedDefaultPenalities => clonedDefaultPenalities
 } = {}) {
-  penalties = penalties(cloneDeep(DEFAULT_PENALITIES))
+  penalties = penalties(cloneDeep(DEFAULT_PENALTIES))
   const candidates = []
 
   // Create an array of words which will be exposed to the context of penalties
