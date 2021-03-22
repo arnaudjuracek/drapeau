@@ -1,6 +1,6 @@
 import drapeau from '../'
 
-let text = 'Changer d’ère: \nquels paysages climatiques de l’anthropocène ?'
+let text = 'La Fédération Française du Paysage vous invite à la proclamation du «PALMARÈS DU PAYSAGE»'
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 const dpi = window.devicePixelRatio || 1
@@ -24,7 +24,7 @@ function render (width = window.innerWidth, height = window.innerHeight) {
   const result = drapeau(text, {
     step: 1,
     minFontSize: 30,
-    maxFontSize: 50,
+    maxFontSize: 100,
     width: canvas.width / dpi,
     measure: (glyph, fontSize) => {
       ctx.font = `${fontSize}px "Helvetica"`
@@ -34,6 +34,13 @@ function render (width = window.innerWidth, height = window.innerHeight) {
       }
     },
     penalties: penalties => {
+      // delete penalties.HANGING_PUNCTUATION
+      delete penalties.WIDOWS
+      if (text.length < 100) {
+        delete penalties.EOL_SHORT_WORDS
+        delete penalties.UNBALANCED_LINES
+      }
+
       penalties.HEIGHT_DIFFERENCE = {
         weight: 0.1,
         value: ({ lines, fontSize }) => {
@@ -48,15 +55,15 @@ function render (width = window.innerWidth, height = window.innerHeight) {
         }
       }
 
-      penalties.OUT_OF_SQUARE = {
-        weight: 0.25,
-        value: ({ lines, fontSize }) => {
-          const maxWidth = Math.max(...lines.map(line => line.width))
-          const textHeight = lines.length * fontSize
-          const ratio = textHeight / maxWidth
-          return ratio > 1 ? 1 / ratio : ratio
-        }
-      }
+      // penalties.OUT_OF_SQUARE = {
+      //   weight: 0.25,
+      //   value: ({ lines, fontSize }) => {
+      //     const maxWidth = Math.max(...lines.map(line => line.width))
+      //     const textHeight = lines.length * fontSize
+      //     const ratio = textHeight / maxWidth
+      //     return ratio > 1 ? 1 / ratio : ratio
+      //   }
+      // }
 
       return penalties
     }
