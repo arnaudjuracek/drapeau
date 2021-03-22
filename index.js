@@ -3,7 +3,7 @@ import wrap from 'word-wrapper'
 
 const DEFAULT_PENALTIES = {
   HANGING_PUNCTUATION: {
-    illegal: ({ lines }) => lines.find(line => /^\W/.test(line.value))
+    illegal: ({ lines }) => lines.find(line => /^[:?!.,]/.test(line.value))
   },
 
   TRUNCATIONS: {
